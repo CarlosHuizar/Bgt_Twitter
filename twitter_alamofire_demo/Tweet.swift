@@ -32,6 +32,7 @@ class Tweet {
         let user = dictionary["user"] as! [String: Any]
         self.user = User(dictionary: user)
         
+        
         let createdAtOriginalString = dictionary["created_at"] as! String
         let formatter = DateFormatter()
         // Configure the input format to parse the date string
