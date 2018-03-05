@@ -1,8 +1,8 @@
-# Project 5 - *Name of App Here*
+# Project 5 - TWITTER
 
-**Name of your app** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
+TWITTER is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **X** hours spent in total
+Time spent: 7 hours spent in total
 
 ## User Stories
 
