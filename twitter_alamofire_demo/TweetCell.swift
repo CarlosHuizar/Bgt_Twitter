@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class TweetCell: UITableViewCell {
     
@@ -23,41 +24,44 @@ class TweetCell: UITableViewCell {
     
     var tweet: Tweet! {
         didSet {
-//            pictureImageView.af_setImage(withURL: URL(string: tweet.user.profilePic)!)
-            if(tweet.favorited == true)
-            {
-                favButton.setImage(UIImage(named: "favor-icon-red.png"), for:[])
-            }
-            else
-            {
-                favButton.setImage(UIImage(named: "favor-icon.png"), for:[])
-            }
-            if(tweet.retweeted == true)
-            {
-                retweetButton.setImage(UIImage(named: "retweet-icon-green.png"), for:[])
-            }
-            else
-            {
-                retweetButton.setImage(UIImage(named: "retweet-icon.png"), for:[])
-            }
-            tweetTextLabel.text = tweet.text
-            nameTextLabel.text = tweet.user.name
-            usernameTextLabel.text = ("@" + tweet.user.screenName!) as String?
-            dateLabel.text = tweet.createdAtString
-            retweetLabel.text = String(tweet.retweetCount)
-            favLabel.text = String(describing: tweet.favoriteCount)
-            if(tweet.favoriteCount != nil)
-            {
-                let c = tweet.favoriteCount!
-                favLabel.text = String(c)
-            }
-            else
-            {
-                favLabel.text = "N/A"
-            }
-            
-            
+            refreshData()
         }
+    }
+    func refreshData()
+    {
+        if(tweet.favorited == true)
+        {
+            favButton.setImage(UIImage(named: "favor-icon-red.png"), for:[])
+        }
+        else
+        {
+            favButton.setImage(UIImage(named: "favor-icon.png"), for:[])
+        }
+        if(tweet.retweeted == true)
+        {
+            retweetButton.setImage(UIImage(named: "retweet-icon-green.png"), for:[])
+        }
+        else
+        {
+            retweetButton.setImage(UIImage(named: "retweet-icon.png"), for:[])
+        }
+        //            pictureImageView.af_setImage(withURL: tweet.user.profileURL)
+        tweetTextLabel.text = tweet.text
+        nameTextLabel.text = tweet.user.name
+        usernameTextLabel.text = ("@" + tweet.user.screenName!) as String?
+        dateLabel.text = tweet.createdAtString
+        retweetLabel.text = String(tweet.retweetCount)
+        favLabel.text = String(describing: tweet.favoriteCount)
+        if(tweet.favoriteCount != nil)
+        {
+            let c = tweet.favoriteCount!
+            favLabel.text = String(c)
+        }
+        else
+        {
+            favLabel.text = "N/A"
+        }
+        
     }
     @IBAction func didTapFavorite(_ sender: Any) {
         if(tweet.favorited == false){
@@ -70,7 +74,9 @@ class TweetCell: UITableViewCell {
                 } else if let tweet = tweet {
                     print("Successfully favorited the following Tweet: \n\(tweet.text)")
                 }
+                
             }
+            self.refreshData()
         }
         else
         {
@@ -84,6 +90,7 @@ class TweetCell: UITableViewCell {
                     print("Successfully unFavorited the following Tweet: \n\(tweet.text)")
                 }
             }
+            self.refreshData()
         }
     }
     
@@ -100,6 +107,7 @@ class TweetCell: UITableViewCell {
                     print("Successfully retweeted the following Tweet: \n\(tweet.text)")
                 }
             }
+            self.refreshData()
         }
         else
         {
@@ -113,6 +121,7 @@ class TweetCell: UITableViewCell {
                     print("Successfully unRetweeted the following Tweet: \n\(tweet.text)")
                 }
             }
+            self.refreshData()
         }
     }
     override func awakeFromNib() {

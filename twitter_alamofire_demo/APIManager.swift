@@ -142,7 +142,7 @@ class APIManager: SessionManager {
         }
     }
     func retweet(_ tweet: Tweet, completion: @escaping (Tweet?, Error?) -> ()) {
-        let urlString = "https://api.twitter.com/1.1/favorites/retweet.json"
+        let urlString = "https://api.twitter.com/1.1/statuses/retweet.json"
         let parameters = ["id": tweet.id]
         request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.queryString).validate().responseJSON { (response) in
             if response.result.isSuccess,
@@ -155,7 +155,7 @@ class APIManager: SessionManager {
         }
     }
     func unRetweet(_ tweet: Tweet, completion: @escaping (Tweet?, Error?) -> ()) {
-        let urlString = "https://api.twitter.com/1.1/favorites/unretweet.json"
+        let urlString = "https://api.twitter.com/1.1/statuses/unretweet.json"
         let parameters = ["id": tweet.id]
         request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.queryString).validate().responseJSON { (response) in
             if response.result.isSuccess,
