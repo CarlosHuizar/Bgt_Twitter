@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 class TweetCell: UITableViewCell {
     
@@ -45,7 +46,8 @@ class TweetCell: UITableViewCell {
         {
             retweetButton.setImage(UIImage(named: "retweet-icon.png"), for:[])
         }
-        //            pictureImageView.af_setImage(withURL: tweet.user.profileURL)
+        let url = URL(string: tweet.user.profileURL)!
+        pictureImageView.af_setImage(withURL: url)
         tweetTextLabel.text = tweet.text
         nameTextLabel.text = tweet.user.name
         usernameTextLabel.text = ("@" + tweet.user.screenName!) as String?

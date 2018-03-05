@@ -92,7 +92,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXv-3D-HUr">
-                                                    <rect key="frame" x="99" y="123.5" width="38" height="36.5"/>
+                                                    <rect key="frame" x="109" y="123.5" width="38" height="36.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <state key="normal" image="retweet-icon"/>
                                                     <connections>
